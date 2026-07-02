@@ -1,0 +1,34 @@
+---
+title: "Dynamic Year"
+format: html
+base-year: 2026
+shortcodes:
+  - dynamic-year.lua
+---
+
+## Shortcodes Quarto
+
+L'année de référence est {{< dynamic-year 0 >}}.
+L'année précédente est {{< dynamic-year -1 >}}.
+
+Une date dynamique garde son mois et son jour :
+{{< dynamic-date "YYYY-10-15" >}}.
+
+Une date impossible lève une erreur par défaut. Elle peut aussi être ramenée à
+la fin du mois valide ou au début du mois suivant :
+{{< dynamic-date "YYYY-02-30" invalid="previous-month-end" >}} et
+{{< dynamic-date "YYYY-02-30" invalid="next-month-start" >}}.
+
+## Helpers R
+
+```{r}
+source("dynamic-year.R")
+
+dynamic_year()
+dynamic_year(-1)
+dynamic_date("YYYY")
+dynamic_date("YYYY-10-15")
+dynamic_date(as.Date("2019-10-15"))
+dynamic_date("YYYY-02-30", invalid = "previous-month-end")
+dynamic_date("YYYY-02-30", invalid = "next-month-start")
+```
