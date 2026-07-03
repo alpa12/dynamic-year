@@ -84,12 +84,7 @@ local function invalid_mode(kwargs, raw_args)
     raw_mode = kwargs["invalid"]
   end
   local mode = raw_mode ~= nil and to_text(raw_mode) or "error"
-  if mode == "" and raw_args ~= nil then
-    if type(raw_args) == "table" and raw_args[2] ~= nil then
-      mode = to_text(raw_args[2])
-    end
-  end
-  if mode == "" and raw_args ~= nil then
+  if (mode == "" or mode == "error") and raw_args ~= nil then
     local raw_text = to_text(raw_args)
     mode = raw_text:match("invalid%s*=%s*[\"']([^\"']+)[\"']") or raw_text:match("invalid%s*=%s*([^%s]+)") or mode
   end
@@ -97,6 +92,13 @@ local function invalid_mode(kwargs, raw_args)
     mode = "error"
   end
   mode = mode:gsub("^['\"]", ""):gsub("['\"]$", "")
+  if mode:match("previous%-month%-end") then
+    mode = "previous-month-end"
+  elseif mode:match("next%-month%-start") then
+    mode = "next-month-start"
+  elseif mode:match("^error") then
+    mode = "error"
+  end
   if mode ~= "error" and mode ~= "previous-month-end" and mode ~= "next-month-start" then
     fail("Le parametre `invalid` doit valoir `error`, `previous-month-end` ou `next-month-start`.")
   end
