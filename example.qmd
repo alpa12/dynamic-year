@@ -12,25 +12,25 @@ shortcodes:
 
 This document sets `base-year: 2026` in its YAML front matter. The examples
 below show the shortcode source first, followed by the rendered value.
-The source blocks include a space between the opening braces so Quarto displays
-them instead of executing them.
+The source blocks use Quarto's shortcode escape syntax so Quarto displays them
+instead of executing them.
 
 ### Years
 
 ```markdown
-{ {< dynamic-year 0 >}}
+{{</* dynamic-year */>}}
 ```
 
-Result: {{< dynamic-year 0 >}}
+Result: {{< dynamic-year >}}
 
 ```markdown
-{ {< dynamic-year -1 >}}
+{{</* dynamic-year -1 */>}}
 ```
 
 Result: {{< dynamic-year -1 >}}
 
 ```markdown
-{ {< dynamic-year 1 >}}
+{{</* dynamic-year 1 */>}}
 ```
 
 Result: {{< dynamic-year 1 >}}
@@ -41,7 +41,7 @@ The `dynamic-date` shortcode replaces the `YYYY` placeholder with the computed
 year while keeping the month and day.
 
 ```markdown
-{ {< dynamic-date "YYYY-10-15" >}}
+{{</* dynamic-date "YYYY-10-15" */>}}
 ```
 
 Result: {{< dynamic-date "YYYY-10-15" >}}
@@ -49,7 +49,7 @@ Result: {{< dynamic-date "YYYY-10-15" >}}
 Offsets work for dates as well.
 
 ```markdown
-{ {< dynamic-date "YYYY-10-15" -1 >}}
+{{</* dynamic-date "YYYY-10-15" -1 */>}}
 ```
 
 Result: {{< dynamic-date "YYYY-10-15" -1 >}}
@@ -58,13 +58,13 @@ Invalid dates fail by default. You can choose how to repair them when rendering
 dates such as February 30.
 
 ```markdown
-{ {< dynamic-date "YYYY-02-30" invalid="previous-month-end" >}}
+{{</* dynamic-date "YYYY-02-30" invalid="previous-month-end" */>}}
 ```
 
 Result: {{< dynamic-date "YYYY-02-30" invalid="previous-month-end" >}}
 
 ```markdown
-{ {< dynamic-date "YYYY-02-30" invalid="next-month-start" >}}
+{{</* dynamic-date "YYYY-02-30" invalid="next-month-start" */>}}
 ```
 
 Result: {{< dynamic-date "YYYY-02-30" invalid="next-month-start" >}}
