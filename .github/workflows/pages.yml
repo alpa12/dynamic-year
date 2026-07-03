@@ -40,10 +40,9 @@ jobs:
 
       - name: Render example
         run: |
-          quarto render example.qmd --to html --output index.html
           mkdir -p _site
-          cp index.html _site/index.html
-          if [ -d index_files ]; then cp -R index_files _site/index_files; fi
+          quarto render example.qmd --to html --output index.html --output-dir _site
+          touch _site/.nojekyll
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

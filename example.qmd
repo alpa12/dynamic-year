@@ -1,6 +1,8 @@
 ---
 title: "Dynamic Year"
-format: html
+format:
+  html:
+    embed-resources: true
 base-year: 2026
 shortcodes:
   - dynamic-year.lua

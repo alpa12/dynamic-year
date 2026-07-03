@@ -66,6 +66,8 @@ or from the nearest `_quarto.yml`.
 
 ## Example
 
+The rendered example is available at <https://alpa12.github.io/dynamic-year/>.
+
 Render the bundled example:
 
 ```bash
