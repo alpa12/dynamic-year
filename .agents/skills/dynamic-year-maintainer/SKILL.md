@@ -7,14 +7,17 @@ description: Maintain and evolve the Dynamic Year Quarto extension in this repos
 
 ## Project Map
 
-Maintain a small Quarto shortcode extension:
+Maintain a small Quarto shortcode extension. The installable extension lives in
+`_extensions/dynamic-year/`, because `quarto add` expects extension metadata in
+an `_extensions/<extension-name>/` subdirectory.
 
-- `_extension.yml`: extension metadata, Quarto requirement, contributed shortcode file.
-- `dynamic-year.lua`: Quarto shortcode implementation for `{{< dynamic-year >}}` and `{{< dynamic-date >}}`.
-- `dynamic-year.R`: R helpers that mirror the shortcode behavior inside executable chunks.
+- `_extensions/dynamic-year/_extension.yml`: extension metadata, Quarto requirement, contributed shortcode file.
+- `_extensions/dynamic-year/dynamic-year.lua`: Quarto shortcode implementation for `{{< dynamic-year >}}` and `{{< dynamic-date >}}`.
+- `_extensions/dynamic-year/dynamic-year.R`: R helpers that mirror the shortcode behavior inside executable chunks.
 - `README.md`: user-facing installation and usage documentation.
 - `example.qmd`: canonical executable example; keep it aligned with the README and rendered output.
 - `.agents/skills/`: agent-facing operating knowledge for maintainers and users.
+- `_extensions/dynamic-year/.agents/skills/dynamic-year-user/`: bundled user skill copied by `quarto add`.
 
 ## Behavioral Contract
 
@@ -34,7 +37,7 @@ Preserve these public behaviors unless the user explicitly asks for a breaking c
 
 ## Maintenance Workflow
 
-Start by reading the relevant source and documentation before editing. For behavior changes, inspect both `dynamic-year.lua` and `dynamic-year.R`; the two implementations should stay intentionally parallel.
+Start by reading the relevant source and documentation before editing. For behavior changes, inspect both `_extensions/dynamic-year/dynamic-year.lua` and `_extensions/dynamic-year/dynamic-year.R`; the two implementations should stay intentionally parallel.
 
 When changing behavior:
 
@@ -56,7 +59,7 @@ Use the narrowest validation that proves the change:
 quarto render example.qmd --to html
 ```
 
-For R-only edits, also run a small `Rscript --vanilla -e` check that sources `dynamic-year.R` and exercises `dynamic_year()`, `dynamic_date("YYYY")`, a normal date, an invalid date repair, and a leap-year edge case.
+For R-only edits, also run a small `Rscript --vanilla -e` check that sources `_extensions/dynamic-year/dynamic-year.R` and exercises `dynamic_year()`, `dynamic_date("YYYY")`, a normal date, an invalid date repair, and a leap-year edge case.
 
 For shortcode parsing changes, include at least one rendered `example.qmd` case using Quarto's escaped shortcode syntax for the displayed source and a live shortcode for the result.
 
