@@ -33,14 +33,6 @@ the extension:
 .agents/skills/dynamic-year-user/
 ```
 
-When Codex is started inside this source repository, the skill is discovered
-automatically because Codex scans `.agents/skills` from the working directory up
-to the repository root. Invoke it explicitly with:
-
-```text
-$dynamic-year-user
-```
-
 If another project installs this Quarto extension with
 `quarto add alpa12/dynamic-year`, the extension is copied under
 `_extensions/dynamic-year/`. The bundled skill will not appear automatically in
