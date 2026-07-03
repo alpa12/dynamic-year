@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dynamic Year Maintainer"
+  short_description: "Maintain the Dynamic Year extension"
+  default_prompt: "Use $dynamic-year-maintainer to update and verify the Dynamic Year Quarto extension."
