@@ -7,10 +7,10 @@ description: Use the Dynamic Year Quarto extension in Quarto projects and docume
 
 ## Quick Use
 
-Install the extension folder in a Quarto project at:
+Install the extension in a Quarto project with:
 
-```text
-_extensions/dynamic-year/
+```bash
+quarto add alpa12/dynamic-year
 ```
 
 Define the reference year in `_quarto.yml` or in a document front matter:

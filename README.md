@@ -12,10 +12,10 @@ It provides:
 
 ## Installation
 
-In a Quarto project, copy this folder to:
+In a Quarto project, install the extension with:
 
-```text
-_extensions/dynamic-year/
+```bash
+quarto add alpa12/dynamic-year
 ```
 
 Then define a reference year in `_quarto.yml` or in a document front matter:
@@ -24,16 +24,16 @@ Then define a reference year in `_quarto.yml` or in a document front matter:
 base-year: 2026
 ```
 
-## Codex User Skill
+## Agent User Skill
 
-This repository includes a simple Codex skill for authors who want help using
+This repository includes a simple Agent skill for authors who want help using
 the extension:
 
 ```text
 .agents/skills/dynamic-year-user/
 ```
 
-When Codex is started inside this repository, the skill is discovered
+When Codex is started inside this source repository, the skill is discovered
 automatically because Codex scans `.agents/skills` from the working directory up
 to the repository root. Invoke it explicitly with:
 
@@ -41,12 +41,18 @@ to the repository root. Invoke it explicitly with:
 $dynamic-year-user
 ```
 
-To install the user skill for personal use across repositories, copy the skill
-folder to the current user skills location:
+If another project installs this Quarto extension with
+`quarto add alpa12/dynamic-year`, the extension is copied under
+`_extensions/dynamic-year/`. The bundled skill will not appear automatically in
+that project's skill list, because Codex discovers repository skills from
+`.agents/skills`, not from nested extension folders.
+
+To install the user skill for personal use across repositories after running
+`quarto add`, copy the skill folder to the current user skills location:
 
 ```bash
 mkdir -p ~/.agents/skills
-cp -R .agents/skills/dynamic-year-user ~/.agents/skills/
+cp -R _extensions/dynamic-year/.agents/skills/dynamic-year-user ~/.agents/skills/
 ```
 
 Codex usually detects skill changes automatically. If the skill does not appear
