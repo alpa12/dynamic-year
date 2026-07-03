@@ -24,6 +24,34 @@ Then define a reference year in `_quarto.yml` or in a document front matter:
 base-year: 2026
 ```
 
+## Codex User Skill
+
+This repository includes a simple Codex skill for authors who want help using
+the extension:
+
+```text
+.agents/skills/dynamic-year-user/
+```
+
+When Codex is started inside this repository, the skill is discovered
+automatically because Codex scans `.agents/skills` from the working directory up
+to the repository root. Invoke it explicitly with:
+
+```text
+$dynamic-year-user
+```
+
+To install the user skill for personal use across repositories, copy the skill
+folder to the current user skills location:
+
+```bash
+mkdir -p ~/.agents/skills
+cp -R .agents/skills/dynamic-year-user ~/.agents/skills/
+```
+
+Codex usually detects skill changes automatically. If the skill does not appear
+in the skill selector or via `$dynamic-year-user`, restart Codex.
+
 ## Quarto Shortcodes
 
 Use `dynamic-year` with an integer offset:
